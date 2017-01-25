@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
+        <script>
+         var Submit=function(){
+            var URLs="recive.php";
+           
+		   var mydata="input1="+"abc";
+		   
+            $.ajax({
+                url: URLs,
+                data: $('#sentToBack').serialize(),
+                type:"POST",
+                dataType:'text',
+
+                success: function(msg){
+                    alert(msg);
+                },
+
+                 error:function(xhr, ajaxOptions, thrownError){ 
+                    alert(xhr.status); 
+                    alert(thrownError); 
+                 }
+            });
+            
+        }
+        </script>
+    </head>
+    <body>
+        <form id="sentToBack">
+            <input type="text" name="Text"/> 
+            <input type="button"  value="send" onClick="Submit()"/>
+        </form>
+    </body>
+</html>
